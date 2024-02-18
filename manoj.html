@@ -1,0 +1,149 @@
+<html>
+	<head>
+	
+	</head>
+	<body>
+		<div style = "text-align:center;">
+			<h1>Bubble App</h1>
+			<canvas id="myCanvas" width="730" height="530" style="border:4px solid #000000;" ></canvas>
+			<br><br><br>
+			<div>
+				<button style="float:center;" onclick="reset()"  >
+					<h3>Reset</h3>
+				</button>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	ctx.beginPath();
+	const circle1 = new Path2D();
+	const circle2 = new Path2D();
+	const circle3 = new Path2D();
+	const circle4 = new Path2D();
+	const arrow1 = new Path2D();
+	const arrow2 = new Path2D();
+	const arrow3 = new Path2D();
+	const arrow4 = new Path2D();
+	const arrow5 = new Path2D();
+	const arrow6 = new Path2D();
+	const arrow7 = new Path2D();
+	const arrow8 = new Path2D();
+	circle1.arc(80, 75, 50, 0, 2 * Math.PI);
+	ctx.fillStyle = "red";
+	ctx.fill(circle1);
+	ctx.stroke(circle1);
+	ctx.beginPath();
+	circle2.arc(80, 200, 50, 0, 2 * Math.PI);
+	ctx.fillStyle = "blue";
+	ctx.fill(circle2);
+	ctx.stroke(circle2);
+	ctx.beginPath();
+	circle3.arc(80, 325, 50, 0, 2 * Math.PI);
+	ctx.fillStyle = "green";
+	ctx.fill(circle3);
+	ctx.stroke(circle3);
+	ctx.beginPath();
+	circle4.arc(80, 450, 50, 0, 2 * Math.PI);
+	ctx.fillStyle = "yellow";
+	ctx.fill(circle4);
+	ctx.stroke(circle4);
+	drawArrow(ctx, 650, 75, 600, 75, 5, 'black',arrow1);
+	drawArrow(ctx, 650, 200, 600, 200, 5, 'black',arrow2);
+	drawArrow(ctx, 650, 325, 600, 325, 5, 'black',arrow3);
+	drawArrow(ctx, 650, 450, 600, 450, 5, 'black',arrow4);
+	function drawArrow(ctx, fromx, fromy, tox, toy, arrowWidth, color,arrow){
+		var headlen = 10;
+		var angle = Math.atan2(toy-fromy,tox-fromx);
+ 
+		ctx.save();
+		ctx.strokeStyle = color;
+		
+		ctx.beginPath();
+		arrow.moveTo(fromx, fromy);
+		arrow.lineTo(tox, toy);
+		ctx.lineWidth = arrowWidth;
+		ctx.stroke(arrow);
+ 
+		ctx.beginPath();
+		arrow.moveTo(tox, toy);
+		arrow.lineTo(tox-headlen*Math.cos(angle-Math.PI/7),
+               toy-headlen*Math.sin(angle-Math.PI/7));
+ 
+		arrow.lineTo(tox-headlen*Math.cos(angle+Math.PI/7),
+               toy-headlen*Math.sin(angle+Math.PI/7));
+ 
+		arrow.lineTo(tox, toy);
+		arrow.lineTo(tox-headlen*Math.cos(angle-Math.PI/7),
+               toy-headlen*Math.sin(angle-Math.PI/7));
+		ctx.stroke(arrow);
+		ctx.restore(arrow);
+	};
+	c.addEventListener('click', function(event) {
+		if (ctx.isPointInPath(circle1, event.offsetX, event.offsetY)) {
+			ctx.fillStyle = '#8B0000';
+			ctx.clearRect(595, 65, 60,20);
+			drawArrow(ctx, 170, 75, 220, 75, 5, 'black',arrow5);
+			ctx.fill(circle1);
+		}
+		if (ctx.isPointInPath(circle2, event.offsetX, event.offsetY)) {
+			ctx.fillStyle = '#00008B';
+			ctx.clearRect(595, 190, 60,20);
+			drawArrow(ctx, 170, 200, 220, 200, 5, 'black',arrow6);
+			ctx.fill(circle2);
+		}
+		if (ctx.isPointInPath(circle3, event.offsetX, event.offsetY)) {
+			ctx.fillStyle = '#023020';
+			ctx.clearRect(595, 315, 60,20);
+			drawArrow(ctx, 170, 325, 220, 325, 5, 'black',arrow7);
+			ctx.fill(circle3);
+		}
+		if (ctx.isPointInPath(circle4, event.offsetX, event.offsetY)) {
+			ctx.fillStyle = '#8B8000';
+			ctx.clearRect(595, 440, 60,20);
+			drawArrow(ctx, 170, 450, 220, 450, 5, 'black',arrow8);
+			ctx.fill(circle4);
+		}
+	});
+	function reset() {
+		ctx.clearRect(0,0,c.width,c.height);
+		const circle1 = new Path2D();
+		const circle2 = new Path2D();
+		const circle3 = new Path2D();
+		const circle4 = new Path2D();
+		const arrow1 = new Path2D();
+		const arrow2 = new Path2D();
+		const arrow3 = new Path2D();
+		const arrow4 = new Path2D();
+		const arrow5 = new Path2D();
+		const arrow6 = new Path2D();
+		const arrow7 = new Path2D();
+		const arrow8 = new Path2D();
+		circle1.arc(80, 75, 50, 0, 2 * Math.PI);
+		ctx.fillStyle = "red";
+		ctx.fill(circle1);
+		ctx.stroke(circle1);
+		ctx.beginPath();
+		circle2.arc(80, 200, 50, 0, 2 * Math.PI);
+		ctx.fillStyle = "blue";
+		ctx.fill(circle2);
+		ctx.stroke(circle2);
+		ctx.beginPath();
+		circle3.arc(80, 325, 50, 0, 2 * Math.PI);
+		ctx.fillStyle = "green";
+		ctx.fill(circle3);
+		ctx.stroke(circle3);
+		ctx.beginPath();
+		circle4.arc(80, 450, 50, 0, 2 * Math.PI);
+		ctx.fillStyle = "yellow";
+		ctx.fill(circle4);
+		ctx.stroke(circle4);
+		drawArrow(ctx, 650, 75, 600, 75, 5, 'black',arrow1);
+		drawArrow(ctx, 650, 200, 600, 200, 5, 'black',arrow2);
+		drawArrow(ctx, 650, 325, 600, 325, 5, 'black',arrow3);
+		drawArrow(ctx, 650, 450, 600, 450, 5, 'black',arrow4);
+	}
+	
+</script>
